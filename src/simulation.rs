@@ -67,5 +67,21 @@ impl Rapier {
         0u64
     }
 
-    pub fn step(&mut self) {}
+    pub fn step(&mut self) {
+        self.physics_pipeline.step(
+            &self.gravity,
+            &self.integration_parameters,
+            &mut self.island_manager,
+            &mut self.broad_phase,
+            &mut self.narrow_phase,
+            &mut self.rigid_body_set,
+            &mut self.collider_set,
+            &mut self.impulse_joint_set,
+            &mut self.multibody_joint_set,
+            &mut self.ccd_solver,
+            Some(&mut self.query_pipeline),
+            &self.physics_hooks,
+            &self.event_handler,
+        );
+    }
 }

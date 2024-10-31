@@ -4,4 +4,4 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-rapier3d = "0.22.0"
+rapier3d = {version = "0.22.0", features = ["debug-render"]}

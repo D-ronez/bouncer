@@ -1,4 +1,5 @@
 use bouncer::copter::{SensorState, SystemState, DEMO_QUAD, QuadControl};
+use bouncer::render::RapierDebugRender;
 use bouncer::simulation::{Rapier};
 
 fn quad_throttle_control(system_time_us: u64, sensor_state: &SensorState, system_state: &SystemState) -> QuadControl {
@@ -10,6 +11,7 @@ fn main() -> () {
     let mut copter = DEMO_QUAD;
     let mut simulation = Rapier::new();
     simulation.add_quad(&copter);
+    let mut render = RapierDebugRender::from_rapier(&mut simulation);
     loop {
         simulation.step();
         let time = simulation.time_us();
