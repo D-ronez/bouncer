@@ -8,8 +8,8 @@ fn quad_throttle_control(system_time_us: u64, sensor_state: &SensorState, system
 
 fn main() -> () {
     let mut copter = DEMO_QUAD;
-    let mut simulation = Rapier{};
-    simulation.add_object(&copter);
+    let mut simulation = Rapier::new();
+    simulation.add_quad(&copter);
     loop {
         simulation.step();
         let time = simulation.time_us();
